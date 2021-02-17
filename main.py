@@ -6,20 +6,21 @@ from pyrogram import Client, filters
 from pyrogram.types import  InlineKeyboardMarkup, InlineKeyboardButton
 
 api_id = 123456789 #int of api id get from my.telegram.org
-api_hash = "Your Api Hash Here" #str of api hash get from my.telegram.org
-token = 'Your Bot Token here' #str of token get from BotFather
+api_hash = " Your Api Hash Here " #str of api hash get from my.telegram.org
+token = ' Your Bot Token here ' #str of token get from BotFather
 app = Client("Downlaoder", api_id, api_hash, bot_token=token) # You Can Change The Session Name by Replace "Downlaoder" to your session name
 
 
 def downloada(url, quality):
+    
     if quality == "1":
         ydl_opts_start = {
-            'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best', # need ffmpeg if you don't have ffmpeg, Change it to "best" or install ffmpeg :)
-            'outtmpl': f'localhoct/%(title)s.%(ext)s',
+            'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best', #This Method Need ffmpeg
+            'outtmpl': f'localhoct/%(id)s.%(ext)s',
             'no_warnings': True,
             'ignoreerrors': True,
             'noplaylist': True,
-            'http_chunk_size': 2097152,
+            'http_chunk_size': 20097152,
             'writethumbnail': True
 
         }
@@ -27,11 +28,29 @@ def downloada(url, quality):
             result = ydl.extract_info("{}".format(url))
             title = ydl.prepare_filename(result)
             ydl.download([url])
-        return f'{title}'
+        return title
+    
     if quality == "2":
         ydl_opts_start = {
+            'format': 'best', #This Method Don't Need ffmpeg , if you don't have ffmpeg use This 
+            'outtmpl': f'localhoct/%(id)s.%(ext)s',
+            'no_warnings': False,
+            'logtostderr': False,
+            'ignoreerrors': False,
+            'noplaylist': True,
+            'http_chunk_size': 2097152,
+            'writethumbnail': True
+        }
+        with youtube_dl.YoutubeDL(ydl_opts_start) as ydl:
+            result = ydl.extract_info("{}".format(url))
+            title = ydl.prepare_filename(result)
+            ydl.download([url])
+        return f'{title}'
+    
+    if quality == "3":
+        ydl_opts_start = {
             'format': 'best[height=480]',
-            'outtmpl': f'localhoct/%(title)s.%(ext)s',
+            'outtmpl': f'localhoct/%(id)s.%(ext)s',
             'no_warnings': False,
             'logtostderr': False,
             'ignoreerrors': False,
@@ -66,17 +85,21 @@ def webpage(c, m): # c Mean Client | m Mean Message
                 [
                     [
                         InlineKeyboardButton(
-                            "HD (Recommended)",
+                            "HD (Recommended) - Need ffmpeg",
                             callback_data="%s and 1" % url
                         ),
-
                     ],
                     [
                         InlineKeyboardButton(
-                            "SD (480p)",
+                            "HD - Don't Need ffmpeg",
                             callback_data="%s and 2" % url
                         ),
-
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            "SD (480) Maybe Don't Work",
+                            callback_data= "%s and 3" % url
+                        ),
                     ]
                 ]
             ), disable_web_page_preview=True

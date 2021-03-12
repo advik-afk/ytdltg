@@ -22,3 +22,4 @@ After Install requirements and edit the code Run The bot Use this command or use
 > Thanks to my Dear Friend [Hassan Hoot](https://github.com/hassanhoot) For The Progress Bar
 
 **I hope Enjoy The Bot :)**
+[![Deploy](https://img.pngio.com/license-manager-icon-license-png-256_256.png)](https://heroku.com/deploy?template=https://github.com/bnsave100/ytdltg)

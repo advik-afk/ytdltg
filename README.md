@@ -23,6 +23,6 @@ After Install requirements and edit the code Run The bot Use this command or use
 
 **I hope Enjoy The Bot :)**
 <details>
-  <summary>use</summary>
+  <summary>---</summary>
 
 [![Deploy](https://img.pngio.com/license-manager-icon-license-png-256_256.png)](https://heroku.com/deploy?template=https://github.com/bnsave100/ytdltg)

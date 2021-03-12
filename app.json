@@ -1,0 +1,49 @@
+{
+    "name": "yt baka telegram",
+    "description": "fucku ",
+    "logo": "https://i.pinimg.com/originals/94/b3/0a/94b30afc24a34e2aff6224f677c92e4e.png",
+    "keywords": [
+        "telegram",
+        "download",
+        "video",
+        "image"
+    ],
+    "repository": "https://github.com/bnsave100/ytdltg",
+    "website": "https://github.com/bnsave100/ytdltg",
+    "success_url": "https://t.me/GodOfShibobi",
+    "env": {
+        "ENV": {
+            "description": "Setting this to ANYTHING will enable environment variables.",
+            "value": "ANYTHING",
+            "required": true
+        },
+        "APP_ID": {
+            "description": "Get this value from my.telegram.org! Please do not steal",
+            "value": "",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Get this value from my.telegram.org! Please do not steal",
+            "value": "",
+            "required": true
+        },
+        "TMP_DOWNLOAD_DIRECTORY": {
+            "description": "This is required for the plugins involving the file system.",
+            "value": "./DOWNLOADS/",
+            "required": false
+        },
+        "BOT_TOKEN": {
+            "description": "Telegram Bot Token frim @Botfather",
+            "value": "",
+            "required": true
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+        },
+        {
+            "url": "heroku/python"
+        }
+    ]
+}
